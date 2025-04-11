@@ -27,6 +27,7 @@ export default function ItemsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +48,14 @@ export default function ItemsPage() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem("loggedInUser");
+    if (storedUser) {
+      const { name } = JSON.parse(storedUser);
+      setUserName(name);
+    }
+  }, []);
+
   const filteredPosts = posts.filter((post) =>
     searchTerm.length > 3
       ? post.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -63,7 +72,7 @@ export default function ItemsPage() {
   return (
     <div className="min-h-screen">
       <div className="p-4 max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Posts Table</h1>
+        <h1 className="text-3xl font-bold mb-6">Welcome {userName}</h1>
 
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
           {/* Search input with icon */}
