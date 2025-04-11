@@ -11,11 +11,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
+import { useRouter } from "next/navigation";
 
 export function SignUpForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -98,19 +101,20 @@ export function SignUpForm({
     );
     console.log("userCredentials:", formData);
 
-    setFormData({
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+    // setFormData({
+    //   name: "",
+    //   email: "",
+    //   password: "",
+    //   confirmPassword: "",
+    // });
 
-    setErrors({
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+    // setErrors({
+    //   name: "",
+    //   email: "",
+    //   password: "",
+    //   confirmPassword: "",
+    // });
+    router.push("/login");
   };
 
   return (
@@ -190,10 +194,11 @@ export function SignUpForm({
                   </p>
                 )}
               </div>
-
-              <Button type="submit" className="w-full">
-                Create Account
-              </Button>
+              <a href="/login">
+                <Button type="submit" className="w-full">
+                  Create Account
+                </Button>
+              </a>
 
               <div className="text-center text-sm">
                 Already have an account?{" "}
