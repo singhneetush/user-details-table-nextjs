@@ -67,7 +67,18 @@ Follow these steps to set up the project locally:
 
 ## Folder Structure
 
-/src /components /ui button.tsx # Custom button component card.tsx # Card component used throughout the app input.tsx # Custom input component table.tsx # Table components for listing posts /pages index.tsx # Homepage (Landing page) sign-up.tsx # Sign-up page login.tsx # Login page items.tsx # Items page that shows the posts in a table with search and pagination /lib utils.ts # Utility functions, such as cn (classNames) /styles globals.css # Global styles for the app /public /assets logo.svg # Logo or other static assets
+# /src /components /ui button.tsx 
+# Custom button component card.tsx 
+# Card component used throughout the app input.tsx 
+# Custom input component table.tsx 
+# Table components for listing posts /pages index.tsx 
+# Homepage (Landing page) sign-up.tsx 
+# Sign-up page login.tsx 
+# Login page items.tsx 
+# Items page that shows the posts in a table with search and pagination /lib utils.ts 
+# Utility functions, such as cn (classNames) /styles globals.css 
+# Global styles for the app /public /assets logo.svg 
+# Logo or other static assets
 
 ### Code Explanation
 
