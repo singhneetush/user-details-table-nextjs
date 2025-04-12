@@ -74,8 +74,11 @@ export default function ItemsPage() {
     <div className="min-h-screen">
       <div className="p-4 max-w-6xl mx-auto">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold mb-6">
-            Welcome {userName.toLocaleUpperCase()}
+          <h1 className="text-3xl font-bold mb-6 ">
+            Welcome{" "}
+            <span className="text-[#003b6c]">
+              {userName.toLocaleUpperCase()}
+            </span>
           </h1>
           <Link href="/login">
             <Button>Logout</Button>

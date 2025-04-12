@@ -196,7 +196,6 @@ export function SignUpForm({
                 )}
               </div>
 
-              {/* Submit Button */}
               <Button type="submit" className="w-full">
                 Create Account
               </Button>
