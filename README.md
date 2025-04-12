@@ -121,4 +121,5 @@ The **ItemsPage** fetches a list of posts from a public API and displays them in
 5. **Push to your fork**: `git push origin feature/your-feature`.
 6. **Submit a pull request**.
 
-
+## Author 
+- Neetu Singh
