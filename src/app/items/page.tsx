@@ -12,8 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 type Post = {
   id: number;
   userId: number;
@@ -22,6 +21,7 @@ type Post = {
 };
 
 export default function ItemsPage() {
+  const router = useRouter();
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -57,11 +57,19 @@ export default function ItemsPage() {
     }
   }, []);
 
-  const filteredPosts = posts.filter((post) =>
-    searchTerm.length > 3
-      ? post.title.toLowerCase().includes(searchTerm.toLowerCase())
-      : true
-  );
+  const filteredPosts = posts.filter((post) => {
+    if (searchTerm.trim() === "") return true;
+    const term = searchTerm.toLowerCase();
+
+    const matchesTitle =
+      searchTerm.length > 3 && post.title.toLowerCase().includes(term);
+
+    const matchesId =
+      searchTerm.length !== 0 && post.id.toString().includes(searchTerm);
+
+    return matchesTitle || matchesId;
+  });
+
   const clearInput = () => {
     setSearchTerm("");
   };
@@ -80,17 +88,22 @@ export default function ItemsPage() {
               {userName.toLocaleUpperCase()}
             </span>
           </h1>
-          <Link href="/login">
-            <Button>Logout</Button>
-          </Link>
+
+          <Button
+            onClick={() => {
+              localStorage.removeItem("loggedInUser");
+              router.push("/login");
+            }}
+          >
+            Logout
+          </Button>
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-          {/* Search input with icon */}
           <div className="relative w-full sm:max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500  h-4" />
             <Input
-              placeholder="Search by title..."
+              placeholder="Enter title or id to search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-9"
@@ -101,14 +114,12 @@ export default function ItemsPage() {
             />
           </div>
 
-          {/* Result count */}
           <div className="text-sm text-gray-600">
             Showing {filteredPosts.length}
             {filteredPosts.length === 1 ? " result" : " results"}
           </div>
         </div>
 
-        {/* Loading/Error */}
         {loading ? (
           <div className="text-gray-600">Loading posts...</div>
         ) : error ? (
@@ -147,7 +158,6 @@ export default function ItemsPage() {
             {filteredPosts.length !== 0 && (
               <>
                 <div className="flex items-center justify-center mt-6 mb-6">
-                  {/* Previous Button */}
                   <Button
                     variant="outline"
                     onClick={() => setCurrentPage((prev) => prev - 1)}
@@ -160,13 +170,11 @@ export default function ItemsPage() {
                     <div className="select-none">Previous</div>
                   </Button>
 
-                  {/* Page Info */}
                   <div className="text-sm text-gray-600 mx-5 select-none">
                     Page <span className="font-semibold">{currentPage}</span> of{" "}
                     <span className="font-semibold">{totalPages}</span>
                   </div>
 
-                  {/* Next Button */}
                   <Button
                     variant="outline"
                     onClick={() => setCurrentPage((prev) => prev + 1)}

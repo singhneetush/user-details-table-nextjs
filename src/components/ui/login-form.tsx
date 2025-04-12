@@ -91,8 +91,9 @@ export function LoginForm({
         email: "No user found. Please sign up.",
         password: "No user found. Please sign up.",
       });
-
-      router.push("/sign-up");
+      setTimeout(() => {
+        router.push("/sign-up");
+      }, 2000);
     }
   };
 
@@ -126,7 +127,7 @@ export function LoginForm({
                   <Label htmlFor="password">Password</Label>
                   <Link
                     href="#"
-                    className="text-sm underline-offset-4 hover:underline"
+                    className="text-sm underline-offset-4 hover:underline  hover:text-blue-600"
                   >
                     Forgot your password?
                   </Link>
@@ -151,8 +152,20 @@ export function LoginForm({
 
               <div className="text-center text-sm">
                 Don&apos;t have an account?{" "}
-                <Link href="/sign-up" className="underline underline-offset-4">
+                <Link
+                  href="/sign-up"
+                  className="underline underline-offset-4  hover:text-blue-600"
+                >
                   Sign up
+                </Link>
+              </div>
+              <div className="text-center text-sm">
+                Return to{" "}
+                <Link
+                  href="/"
+                  className="underline underline-offset-4 hover:text-blue-600"
+                >
+                  Homepage
                 </Link>
               </div>
             </div>

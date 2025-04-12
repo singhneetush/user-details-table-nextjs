@@ -128,7 +128,6 @@ export function SignUpForm({
         <CardContent>
           <form onSubmit={handleSubmit} noValidate>
             <div className="grid gap-4">
-              {/* Name */}
               <div className="grid gap-2">
                 <Label htmlFor="name">Name</Label>
                 <Input
@@ -144,7 +143,6 @@ export function SignUpForm({
                 )}
               </div>
 
-              {/* Email */}
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -160,7 +158,6 @@ export function SignUpForm({
                 )}
               </div>
 
-              {/* Password */}
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
@@ -177,7 +174,6 @@ export function SignUpForm({
                 )}
               </div>
 
-              {/* Confirm Password */}
               <div className="grid gap-2">
                 <Label htmlFor="confirmPassword">Confirm Password</Label>
                 <Input
@@ -202,8 +198,20 @@ export function SignUpForm({
 
               <div className="text-center text-sm">
                 Already have an account?{" "}
-                <Link href="/login" className="underline underline-offset-4">
+                <Link
+                  href="/login"
+                  className="underline underline-offset-4 hover:text-blue-600"
+                >
                   Login
+                </Link>
+              </div>
+              <div className="text-center text-sm">
+                Return to{" "}
+                <Link
+                  href="/"
+                  className="underline underline-offset-4 hover:text-blue-600"
+                >
+                  Homepage
                 </Link>
               </div>
             </div>
