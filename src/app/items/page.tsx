@@ -70,6 +70,10 @@ export default function ItemsPage() {
     return matchesTitle || matchesId;
   });
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
   const clearInput = () => {
     setSearchTerm("");
   };
