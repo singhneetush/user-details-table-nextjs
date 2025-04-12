@@ -48,7 +48,6 @@ Follow these steps to set up the project locally:
 
 4. Open the application in your browser at http://localhost:3000.
 
-### Step 3: Technologies Used
 
 ## Technologies Used
 
@@ -109,25 +108,6 @@ The **ItemsPage** fetches a list of posts from a public API and displays them in
 5. **Logout**:
    - Click the logout button to clear the logged-in user data from `localStorage` and redirect back to the login page.
 
-## Usage
-
-1. **Sign up**:
-   - Go to the sign-up page (`/sign-up`), and create an account by providing a name, email, and password.
-2. **Login**:
-
-   - After signing up, go to the login page (`/login`) and log in with your credentials.
-   - Upon successful login, you will be redirected to the items page (`/items`), where you can view a list of posts and search through them.
-
-3. **Post Search**:
-
-   - Use the search bar to filter posts by title or ID.
-   - You can clear the search input by clicking the "X" icon.
-
-4. **Pagination**:
-   - Navigate through the paginated list of posts using the "Previous" and "Next" buttons.
-5. **Logout**:
-   - Click the logout button to clear the logged-in user data from `localStorage` and redirect back to the login page.
-
 ## Contribution
 
 1. **Fork the repository**.
@@ -137,6 +117,4 @@ The **ItemsPage** fetches a list of posts from a public API and displays them in
 5. **Push to your fork**: `git push origin feature/your-feature`.
 6. **Submit a pull request**.
 
-```
 
-```
