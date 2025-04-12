@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Post = {
   id: number;
@@ -72,7 +73,14 @@ export default function ItemsPage() {
   return (
     <div className="min-h-screen">
       <div className="p-4 max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Welcome {userName}</h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold mb-6">
+            Welcome {userName.toLocaleUpperCase()}
+          </h1>
+          <Link href="/login">
+            <Button>Logout</Button>
+          </Link>
+        </div>
 
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
           {/* Search input with icon */}

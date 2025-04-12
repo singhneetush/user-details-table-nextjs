@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function SignUpForm({
   className,
@@ -194,17 +195,17 @@ export function SignUpForm({
                   </p>
                 )}
               </div>
-              <a href="/login">
+              <Link href="/login">
                 <Button type="submit" className="w-full">
                   Create Account
                 </Button>
-              </a>
+              </Link>
 
               <div className="text-center text-sm">
                 Already have an account?{" "}
-                <a href="/login" className="underline underline-offset-4">
+                <Link href="/login" className="underline underline-offset-4">
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           </form>
@@ -212,8 +213,8 @@ export function SignUpForm({
       </Card>
 
       <div className="text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-primary">
-        By signing up, you agree to our <a href="#">Terms of Service</a> and{" "}
-        <a href="#">Privacy Policy</a>.
+        By signing up, you agree to our <Link href="#">Terms of Service</Link>{" "}
+        and <Link href="#">Privacy Policy</Link>.
       </div>
     </div>
   );
