@@ -68,7 +68,7 @@ Follow these steps to set up the project locally:
 ## Folder Structure
 
 - `/src/components/ui`: Contains reusable UI components like buttons, cards, inputs, and table components.
-- `/src/pages`: Holds the page components for different views of your application (home, sign-up, login, items).
+- `/src/app`: Holds the page components for different views of your application (home, sign-up, login, items).
 - `/src/lib/utils.ts`: Utility functions like `cn` (for handling class names) and other helper functions.
 - `/src/styles`: Contains global CSS styles used across the application.
 - `/public/assets`: Folder for static assets like images or logos.
