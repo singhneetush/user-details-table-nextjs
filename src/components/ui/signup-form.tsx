@@ -47,7 +47,7 @@ export function SignUpForm({
       newErrors.name = "Please enter your name";
       valid = false;
     } else if (formData.name.trim().length < 4) {
-      newErrors.name = "Name should be atleast 4 characters";
+      newErrors.name = "Name should be at least 4 characters";
       valid = false;
     } else if (formData.name.trim().length > 30) {
       newErrors.name = "Name should not be more than 30 characters";
@@ -91,30 +91,30 @@ export function SignUpForm({
     e.preventDefault();
     if (!validate()) return;
 
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        confirmPassword: formData.confirmPassword,
-      })
+    const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const userExists = storedUsers.some(
+      (user: { email: string }) => user.email === formData.email
     );
-    console.log("userCredentials:", formData);
 
-    // setFormData({
-    //   name: "",
-    //   email: "",
-    //   password: "",
-    //   confirmPassword: "",
-    // });
+    if (userExists) {
+      setErrors((prev) => ({
+        ...prev,
+        email: "User with this email already exists",
+      }));
+      return;
+    }
 
-    // setErrors({
-    //   name: "",
-    //   email: "",
-    //   password: "",
-    //   confirmPassword: "",
-    // });
+    const newUser = {
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+    };
+
+    storedUsers.push(newUser);
+    localStorage.setItem("users", JSON.stringify(storedUsers));
+
+    console.log("User registered:", newUser);
     router.push("/login");
   };
 
@@ -195,11 +195,11 @@ export function SignUpForm({
                   </p>
                 )}
               </div>
-              <Link href="/login">
-                <Button type="submit" className="w-full">
-                  Create Account
-                </Button>
-              </Link>
+
+              {/* Submit Button */}
+              <Button type="submit" className="w-full">
+                Create Account
+              </Button>
 
               <div className="text-center text-sm">
                 Already have an account?{" "}

@@ -61,33 +61,38 @@ export function LoginForm({
     if (!validate()) return;
 
     console.log("User Sign In credentials:", formData);
-    const storedUser = localStorage.getItem("user");
 
-    if (storedUser) {
-      const { email, password, name } = JSON.parse(storedUser);
-      if (
-        formData.email === email.trim() &&
-        formData.password === password.trim()
-      ) {
-        localStorage.setItem("loggedInUser", JSON.stringify({ name }));
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-        setFormData({ email: "", password: "" });
-        setErrors({ email: "", password: "" });
+    const foundUser = users.find(
+      (user: { email: string; password: string }) =>
+        user.email.trim() === formData.email.trim() &&
+        user.password === formData.password
+    );
 
-        router.push("/items");
-      } else {
-        setErrors({
-          email: "No user found. Please sign up.",
-          password: "No user found. Please sign up.",
-        });
-      }
+    if (foundUser) {
+      localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
+
+      setFormData({
+        email: "",
+        password: "",
+      });
+
+      setErrors({
+        email: "",
+        password: "",
+      });
+
+      router.push("/items");
     } else {
-      console.error("No user present in storage , please sign-up");
-      setFormData({ email: "", password: "" });
+      console.error("No user present in storage, please sign-up");
+
       setErrors({
         email: "No user found. Please sign up.",
         password: "No user found. Please sign up.",
       });
+
+      router.push("/sign-up");
     }
   };
 
