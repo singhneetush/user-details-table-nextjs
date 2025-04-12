@@ -62,7 +62,7 @@ export default function ItemsPage() {
     const term = searchTerm.toLowerCase();
 
     const matchesTitle =
-      searchTerm.length > 3 && post.title.toLowerCase().includes(term);
+      searchTerm.length >= 3 && post.title.toLowerCase().includes(term);
 
     const matchesId =
       searchTerm.length !== 0 && post.id.toString().includes(searchTerm);
