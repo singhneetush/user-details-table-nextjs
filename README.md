@@ -29,8 +29,8 @@ Follow these steps to set up the project locally:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/user-auth-portal.git
-   cd user-auth-portal
+   https://github.com/singhneetush/user-details-table-nextjs.git
+   cd userdetailtable
    ```
 
 2. **Install dependencies:**
