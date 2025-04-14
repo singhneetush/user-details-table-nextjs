@@ -29,7 +29,7 @@ Follow these steps to set up the project locally:
 1. **Clone the repository:**
 
    ```bash
-   https://github.com/singhneetush/user-details-table-nextjs.git
+   git clone https://github.com/singhneetush/user-details-table-nextjs.git
    cd userdetailtable
    ```
 
